@@ -1,0 +1,20 @@
+---
+galaxy_info:
+   author: Denis Osminin / M.Chervyakov
+   description: Role for backup specific paths to s3
+   company: Personal project
+   role_name: backup_files_ansible_role
+   namespace: Mikhail
+
+   license: Apache
+
+   min_ansible_version: 4
+
+   platforms:
+     - name: Ubuntu
+       versions:
+         - focal
+
+   galaxy_tags: [backup]
+
+dependencies: []
