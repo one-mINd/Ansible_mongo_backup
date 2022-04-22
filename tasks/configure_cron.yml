@@ -8,9 +8,6 @@
     month: "{{ item.cron.month }}"
     job: |
 
-<<<<<<< HEAD
-           /usr/local/bin/backup_to_s3.sh -n {{ item.name_backup }} -s {{ item.src_backup }} -d {{ item.aws_dest }} -t {{ item.tmp_dir }} -r {{ item.retain_count }} -e {{ item.filter_date }} >> /var/log/files_backup.log 2>&1 
-=======
-           /usr/local/bin/backup_to_s3.sh -n {{ item.name_backup }} -s {{ item.src_backup }} -d {{ item.aws_dest }} -t {{ item.tmp_dir }} -r {{ item.retain_count }} -e {{ item.filter_date }} > /dev/null 2>&1
->>>>>>> parent of 8d8fa86... configure_cron.yml add >>  var/log/files_backup.log
+          /usr/local/bin/backup_to_s3.sh -n {{ item.name_backup }} -s {{ item.src_backup }} -d {{ item.aws_dest }} -t {{ item.tmp_dir }} -r {{ item.retain_count }} -e {{ item.filter_date }} >> /var/log/files_backup.log 2>&1 
+
   with_items: "{{ backup.paths }}"
