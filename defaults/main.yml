@@ -14,6 +14,8 @@ backup:
   #  - name_backup: super-backup
   #    src_backup: /etc/network
   #    tmp_dir: /tmp
+  #    container_name: name
+  #    database_name: name
   #    aws_dest: ""
   #    retain_count: 5
   #    filter_date: '"5 min ago"'

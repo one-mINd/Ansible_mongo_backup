@@ -4,7 +4,7 @@
 export AWS_SHARED_CREDENTIALS_FILE=/etc/backup/credentials
 
 usage() { 
-    echo "Usage: $0 -n <archive name> -s <source path> -d <destination path> [-t <tmp dir>] [-r <retain count>] [-e <exp date>] ; -e example, \"2 min ago\", \"-2 months 5 day ago\" ";
+    echo "Usage: $0 -n <archive name> -s <source path> -d <destination path> -c <container_name> -b <database_name> [-t <tmp dir>] [-r <retain count>] [-e <exp date>] ; -e example, \"2 min ago\", \"-2 months 5 day ago\" ";
     exit 1; 
 }
 
@@ -27,6 +27,12 @@ while getopts ":n:s:d:t:r:e:" o; do
             ;;
         e)
             EXP_DATE=${OPTARG}
+            ;;
+        c)
+            CONTAINER_NAME=${OPTARG}
+            ;;
+        b)
+            DATABASE=${OPTARG}
             ;;
 
         *)
@@ -70,7 +76,11 @@ send_notification()
 #Archivation
 CURRENT_DATE=$(date -u +%Y%m%d%H%M%S)
 ARCHIVE_FULL_NAME=${TMP}/${NAME}-${CURRENT_DATE}.tar.gz
-tar -C $(dirname ${SRC}) -cpzf ${ARCHIVE_FULL_NAME} $(basename ${SRC})
+
+docker exec -i ${CONTAINER_NAME} /usr/bin/mongodump --db ${DATABASE} --archive=/${NAME}-${CURRENT_DATE}.tar.gz && \
+docker cp ${CONTAINER_NAME}:/${NAME}-${CURRENT_DATE}.tar.gz ${ARCHIVE_FULL_NAME} && \
+docker exec -i ${CONTAINER_NAME} rm -rf /${NAME}-${CURRENT_DATE}.tar.gz
+
 TAR_RESULT=$?
 
 #Archieve to S3. Notification telegram

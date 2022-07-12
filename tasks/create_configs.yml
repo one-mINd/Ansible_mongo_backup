@@ -12,7 +12,7 @@
 
 - name: Copy backup executable file
   copy:
-    src: "backup_to_s3.sh"
+    src: "docker_mongo_backup.sh"
     dest: /usr/local/bin/
     mode: "700"
 
