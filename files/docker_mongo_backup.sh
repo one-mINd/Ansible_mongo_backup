@@ -13,9 +13,6 @@ while getopts ":n:s:d:t:r:e:" o; do
         n)
             NAME=${OPTARG}
             ;;
-        s)
-            SRC=${OPTARG}
-            ;;
         d)
             DEST=${OPTARG}
             ;;
@@ -50,7 +47,7 @@ if [[ -z "${RETAIN_CNT}" ]]; then
     RETAIN_CNT=0
 fi
 
-if [ -z "${NAME}" ] || [ -z "${SRC}" ] || [ -z "${DEST}" ]; then
+if [ -z "${NAME}" ] || [ -z "${DEST}" ] || [ -z "${CONTAINER_NAME}" ] || [ -z "${DATABASE}" ]; then
     usage
 fi
 
