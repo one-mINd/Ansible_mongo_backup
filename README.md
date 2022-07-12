@@ -1,7 +1,8 @@
-## Ansible role for Backup files.
+## Ansible role for Backup Mongo.
 ___
 
 This role archives files using tar.gz. It is also possible to delete files, by number, or by time.
+Today this role can backup only mongodb inside docker container
 
 ```
 USAGE: 
@@ -26,6 +27,8 @@ backup:
   #    tmp_dir: /tmp
   #    aws_dest: ""
   #    retain_count: 5
+  #    container_name: name
+  #    database_name: name
   #    filter_date: '"5 min ago"'
   #    cron:
   #         minute: "*"
