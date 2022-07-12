@@ -4,11 +4,11 @@
 export AWS_SHARED_CREDENTIALS_FILE=/etc/backup/credentials
 
 usage() { 
-    echo "Usage: $0 -n <archive name> -s <source path> -d <destination path> -c <container_name> -b <database_name> [-t <tmp dir>] [-r <retain count>] [-e <exp date>] ; -e example, \"2 min ago\", \"-2 months 5 day ago\" ";
+    echo "Usage: $0 -n <archive name> -d <destination path> -c <container_name> -b <database_name> [-t <tmp dir>] [-r <retain count>] [-e <exp date>] ; -e example, \"2 min ago\", \"-2 months 5 day ago\" ";
     exit 1; 
 }
 
-while getopts ":n:s:d:t:r:e:" o; do
+while getopts ":n:d:t:r:e:c:b:" o; do
     case "${o}" in
         n)
             NAME=${OPTARG}
