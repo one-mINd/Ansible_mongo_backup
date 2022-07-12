@@ -1,10 +1,10 @@
 ---
 galaxy_info:
-   author: Denis Osminin / M.Chervyakov
-   description: Role for backup specific paths to s3
+   author: Denis Osminin / M.Chervyakov / D.Razin
+   description: Role for backup MongoDB to s3
    company: Personal project
-   role_name: backup_files_ansible_role
-   namespace: Mikhail
+   role_name: ansible_mongo_backup
+   namespace: one_mind
 
    license: Apache
 
@@ -15,6 +15,6 @@ galaxy_info:
        versions:
          - focal
 
-   galaxy_tags: [backup]
+   galaxy_tags: [backup, mongo, docker]
 
 dependencies: []
